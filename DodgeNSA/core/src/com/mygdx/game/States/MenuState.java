@@ -36,7 +36,7 @@ public class MenuState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(background, 0, 0, DodgeNSA.WIDTH, DodgeNSA.HEIGHT);
-        sb.draw(playBtn, (DodgeNSA.WIDTH /2) - (playBtn.getWidth()/2), DodgeNSA.HEIGHT / 2);
+        sb.draw(playBtn, (DodgeNSA.WIDTH /2) - (playBtn.getWidth()/2), DodgeNSA.HEIGHT / 4);
         sb.end();
 
     }
