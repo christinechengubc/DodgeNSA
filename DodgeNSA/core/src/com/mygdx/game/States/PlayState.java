@@ -139,8 +139,8 @@ public class PlayState extends State {
         sb.draw(LadderLeft.getLadder(), LadderLeft.getPosition().x, LadderLeft.getPosition().y);
         sb.draw(LadderRight.getLadder(), LadderRight.getPosition().x, LadderRight.getPosition().y);
 
-        bf.draw(sb, savediPhones, 5, 795);
-        bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 200, 795);
+        bf.draw(sb, savediPhones, DodgeNSA.WIDTH / 3, DodgeNSA.HEIGHT / 3 + 20);
+        bf.draw(sb, highScoreString, DodgeNSA.WIDTH / 3, DodgeNSA.HEIGHT / 4 + 50);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
 
         //draw all the obstacles
