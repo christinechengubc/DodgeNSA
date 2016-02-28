@@ -4,19 +4,24 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.DodgeNSA;
+import com.mygdx.game.sprites.Obstacle;
 import com.mygdx.game.sprites.Person;
 import com.mygdx.game.states.State;
+
+import java.util.Random;
 
 /**
  * Created by owner on 27/02/2016.
  */
 public class PlayState extends State {
     private Person person;
+    private Obstacle obstacle;
     private Texture bg;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
         person = new Person(0, 0);
+        obstacle = new Obstacle();
 //        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
         bg = new Texture("bg.jpg");
     }
@@ -31,6 +36,7 @@ public class PlayState extends State {
     public void update(float dt) {
         handleInput();
         person.update(dt);
+        obstacle.update(dt);
     }
 
     @Override
@@ -39,6 +45,7 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
+        sb.draw(obstacle.getObstacle(), obstacle.getPosition().x, obstacle.getPosition().y);
         sb.end();
     }
 
