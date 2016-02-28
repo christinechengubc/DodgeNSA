@@ -18,9 +18,11 @@ import java.util.LinkedList;
 public class PlayState extends State {
     private Person person;
     private Obstacle obstacle1, obstacle2, obstacle3, obstacle4;
+    private iPhone iphone1, iphone2, iphone3, iphone4;
     private LinkedList<Obstacle> obstacles;
-    private LinkedList<Obstacle> toRemove;
-    private LinkedList<Obstacle> toAdd;
+    private LinkedList<iPhone> iphones;
+    //private LinkedList<Obstacle> toRemove;
+    //private LinkedList<Obstacle> toAdd;
     private Rectangle resetPosition;
     private iPhone iPhone;
     private Texture bg;
@@ -44,6 +46,17 @@ public class PlayState extends State {
         obstacles.add(obstacle2);
         obstacles.add(obstacle3);
         obstacles.add(obstacle4);
+
+        iphones = new LinkedList<iPhone>();
+        iphone1 = new iPhone();
+        iphone2 = new iPhone();
+        iphone3 = new iPhone();
+        iphone4 = new iPhone();
+        iphones.add(iphone1);
+        iphones.add(iphone2);
+        iphones.add(iphone3);
+        iphones.add(iphone4);
+
 
 //        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
         iPhone = new iPhone();
@@ -72,20 +85,31 @@ public class PlayState extends State {
                 //obstacles.remove(obstacle); (this generates ConcurrentModificationException)
                 obstacle.resetObject();
             }
+            if (obstacle.collides(person.getBounds())) {
+                gsm.set(new GameOverState(gsm));
+            }
             obstacle.update(dt);
         }
-        //obstacles.addAll(toAdd);
 
         iPhone.update(dt);
-        if (obstacle1.collides(person.getBounds())) {
-            gsm.set(new GameOverState(gsm));
+        for (iPhone iphone : iphones) {
+            iphone.update(dt);
+
+            if (iphone.getPosition().y < 0){
+                //obstacles.remove(obstacle); (this generates ConcurrentModificationException)
+                iphone.resetObject();
+            }
+
+            if (iphone.collides(person.getBounds())) {
+                iphone.noNSA();
+                score += 1;
+                savediPhones= "score: " + (score/5);
+            }
+            iphone.update(dt);
         }
 
-        if (iPhone.collides(person.getBounds())) {
-            iPhone.noNSA();
-            score += 1;
-            savediPhones= "score: " + (score/5);
-        }
+
+
     }
 
     @Override
@@ -100,6 +124,11 @@ public class PlayState extends State {
         //draw all the obstacles
         for (Obstacle obstacle:obstacles) {
             sb.draw(obstacle.getObstacle(), obstacle.getPosition().x, obstacle.getPosition().y);
+        }
+
+        //draw all the iphones
+        for (iPhone iphone:iphones) {
+            sb.draw(iphone.getiPhone(), iphone.getPosition().x, iphone.getPosition().y);
         }
 
         sb.draw(iPhone.getiPhone(), iPhone.getPosition().x, iPhone.getPosition().y);
