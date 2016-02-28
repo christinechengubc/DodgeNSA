@@ -9,6 +9,7 @@ public class Person {
 
     private Vector3 position;
     private Vector3 velocity;
+    private boolean jumpLeft;
 
     private Texture person;
 
@@ -16,6 +17,7 @@ public class Person {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0,0,0);
         person = new Texture("person.png");
+        jumpLeft = false;
     }
 
     public void update(float dt){
@@ -30,6 +32,12 @@ public class Person {
         if(position.y < 0){
             position.y = 0;
         }
+        if(position.x < 0) {
+            position.x = 0;
+        }
+        if(position.x > 150) {
+            position.x = 150;
+        }
     }
 
     public Vector3 getPosition() {
@@ -41,9 +49,10 @@ public class Person {
     }
 
     public void jump(){
-        if(position.x > DodgeNSA.WIDTH/2)
-            velocity.x = 250;
+        if(jumpLeft)
+            velocity.x = -100;
         else
-            velocity.x = -250;
+            velocity.x = 100;
+        jumpLeft = !jumpLeft;
     }
 }
