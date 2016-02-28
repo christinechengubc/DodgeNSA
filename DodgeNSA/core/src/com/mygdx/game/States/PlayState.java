@@ -1,8 +1,8 @@
-package com.mygdx.game.States;
+package com.mygdx.game.states;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.DodgeNSA;
+import com.mygdx.game.states.State;
 
 /**
  * Created by owner on 27/02/2016.
@@ -10,10 +10,9 @@ import com.mygdx.game.DodgeNSA;
 public class PlayState extends State {
     private Texture person;
 
-    protected PlayState(GameStateManager gsm) {
+    public PlayState(GameStateManager gsm) {
         super(gsm);
         person = new Texture("person.png");
-        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
     }
 
     @Override
@@ -32,5 +31,10 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(person, 50, 50);
         sb.end();
+    }
+
+    @Override
+    public void dispose() {
+
     }
 }
