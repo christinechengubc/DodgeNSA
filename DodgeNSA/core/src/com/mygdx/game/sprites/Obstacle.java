@@ -63,7 +63,7 @@ public class Obstacle {
     public void resetObject(){
         obstacle = new Texture("obstacle.png");
         rand = new Random();
-        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT+40)+DodgeNSA.HEIGHT);
+        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT+200)+DodgeNSA.HEIGHT);
         velocity = new Vector2(0,0);
         bounds = new Rectangle(position.x,position.y,obstacle.getWidth(),obstacle.getHeight());
     }

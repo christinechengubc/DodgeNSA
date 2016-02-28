@@ -38,6 +38,14 @@ public class iPhone {
         iPhone = new Texture("stop.png");
 ;    }
 
+    public void resetObject(){
+        iPhone = new Texture("iPhone.png");
+        rand = new Random();
+        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.WIDTH));
+        velocity = new Vector2(0,0);
+        bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
+    }
+
     public boolean collides(Rectangle player) {
         return player.overlaps(bounds);
     }
