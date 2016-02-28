@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.DodgeNSA;
 
 public class Person {
-    private static final int GRAVITY = -15;
+    private static final int UPDOWN = 15;
 
     private Vector3 position;
     private Vector3 velocity;
@@ -21,20 +21,33 @@ public class Person {
     }
 
     public void update(float dt){
-
-
       if(position.y > 0){
-            velocity.add(0, GRAVITY, 0);
-        }
+          //if(position.x == 0 || position.x == DodgeNSA.WIDTH - person.getWidth())
+              velocity.add(0, -UPDOWN, 0);
+          //else
+            //  velocity.y = 0;
+
+      }
+        position.add(0, velocity.y, 0);
         velocity.scl(dt);
         position.add(velocity.x, 0, 0);
         velocity.scl(1/dt);
-        if(position.y < 0){
-            position.y = 0;
+
+        if(position.y < DodgeNSA.HEIGHT - person.getHeight()){
+            //if(position.x == 0 || position.x == DodgeNSA.WIDTH - person.getWidth())
+                velocity.add(0, UPDOWN, 0);
+            //else
+             //   velocity.y = 0;
         }
+
+       // if(position.y < 0) {
+        //    velocity.add(0, UPDOWN, 0);
+       // }
+
         if(position.x < 0) {
             position.x = 0;
         }
+
         if(position.x > DodgeNSA.WIDTH - person.getWidth()) {
             position.x = DodgeNSA.WIDTH - person.getWidth();
         }
@@ -49,10 +62,16 @@ public class Person {
     }
 
     public void jump(){
-        if(jumpLeft)
+        if(jumpLeft) {
             velocity.x = -300;
-        else
+            velocity.y = 0;
+        }
+        else {
             velocity.x = 300;
+            velocity.y = 0;
+        }
+
+
         jumpLeft = !jumpLeft;
     }
 }
