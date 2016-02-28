@@ -18,7 +18,7 @@ public class PlayState extends State {
         super(gsm);
         person = new Person(50, 100);
         cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
-        bg = new Texture("bg.png");
+        bg = new Texture("bg.jpg");
     }
 
     @Override
