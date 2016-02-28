@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.game.DodgeNSA;
+import com.mygdx.game.sprites.Ladder;
 import com.mygdx.game.sprites.Obstacle;
 import com.mygdx.game.sprites.Person;
 import com.mygdx.game.sprites.iPhone;
@@ -17,6 +18,8 @@ import java.util.LinkedList;
  */
 public class PlayState extends State {
     private Person person;
+    private Ladder LadderLeft;
+    private Ladder LadderRight;
     private Obstacle obstacle1, obstacle2, obstacle3, obstacle4;
     private iPhone iphone1, iphone2, iphone3, iphone4;
     private LinkedList<Obstacle> obstacles;
@@ -41,6 +44,8 @@ public class PlayState extends State {
         obstacles = new LinkedList<Obstacle>();
         //toRemove = new LinkedList<Obstacle>();
         //toAdd = new LinkedList<Obstacle>();
+        LadderLeft = new Ladder(0,0);
+        LadderRight = new Ladder(380,0);
         obstacle1 = new Obstacle();
         obstacle2 = new Obstacle();
         obstacle3 = new Obstacle();
@@ -127,6 +132,10 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         bf.setColor(255, 255, 255, 255);
+
+        sb.draw(LadderLeft.getLadder(), LadderLeft.getPosition().x, LadderLeft.getPosition().y);
+        sb.draw(LadderRight.getLadder(), LadderRight.getPosition().x, LadderRight.getPosition().y);
+
         bf.draw(sb, savediPhones, 5, 795);
         //bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 170, 795);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);

@@ -36,6 +36,7 @@ public class GameOverState extends State {
         sb.begin();
         sb.draw(bg, 0, 0, DodgeNSA.WIDTH, DodgeNSA.HEIGHT);
         sb.end();
+
     }
 
     @Override
