@@ -19,7 +19,7 @@ public class PlayState extends State {
     private Obstacle obstacle;
     private iPhone iPhone;
     private Texture bg;
-    private int points;
+    public int points;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
