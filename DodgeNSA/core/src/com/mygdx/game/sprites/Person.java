@@ -25,27 +25,16 @@ public class Person {
 
     public void update(float dt){
       if(position.y > 0){
-          //if(position.x == 0 || position.x == DodgeNSA.WIDTH - person.getWidth())
-              velocity.add(0, -UPDOWN, 0);
-          //else
-            //  velocity.y = 0;
-
+          velocity.add(0, -UPDOWN, 0);
       }
         position.add(0, velocity.y, 0);
         velocity.scl(dt);
         position.add(velocity.x, 0, 0);
         velocity.scl(1/dt);
 
-        if(position.y < DodgeNSA.HEIGHT - person.getHeight()){
-            //if(position.x == 0 || position.x == DodgeNSA.WIDTH - person.getWidth())
-                velocity.add(0, UPDOWN, 0);
-            //else
-             //   velocity.y = 0;
+        if(position.y < DodgeNSA.HEIGHT - person.getHeight()) {
+            velocity.add(0, UPDOWN, 0);
         }
-
-       // if(position.y < 0) {
-        //    velocity.add(0, UPDOWN, 0);
-       // }
 
         if(position.x < 0) {
             position.x = 0;
@@ -71,15 +60,11 @@ public class Person {
 
     public void jump(){
         if(jumpLeft) {
-            velocity.x = -300;
-            velocity.y = 0;
+            velocity.x = -1500;
         }
         else {
-            velocity.x = 300;
-            velocity.y = 0;
+            velocity.x = 1500;
         }
-
-
         jumpLeft = !jumpLeft;
     }
 }
