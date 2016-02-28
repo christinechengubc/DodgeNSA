@@ -68,4 +68,8 @@ public class PlayState extends State {
     public void dispose() {
 
     }
+
+    public int getPoints() {
+        return points;
+    }
 }
