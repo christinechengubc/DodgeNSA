@@ -2,6 +2,7 @@ package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.DodgeNSA;
 
 public class Person {
     private static final int GRAVITY = -15;
@@ -18,11 +19,13 @@ public class Person {
     }
 
     public void update(float dt){
-        if(position.y > 0){
+
+
+      if(position.y > 0){
             velocity.add(0, GRAVITY, 0);
         }
         velocity.scl(dt);
-        position.add(0, velocity.y, 0);
+        position.add(velocity.x, 0, 0);
         velocity.scl(1/dt);
         if(position.y < 0){
             position.y = 0;
@@ -38,6 +41,9 @@ public class Person {
     }
 
     public void jump(){
-        velocity.y = 250;
+        if(position.x > DodgeNSA.WIDTH/2)
+            velocity.x = 250;
+        else
+            velocity.x = -250;
     }
 }
