@@ -67,7 +67,7 @@ public class PlayState extends State {
 
 
 //        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
-        iPhone = new iPhone();
+//        iPhone = new iPhone();
         bg = new Texture("bg.jpg");
         score = 0;
         savediPhones= "score: 0";
@@ -105,7 +105,7 @@ public class PlayState extends State {
             obstacle.update(dt);
         }
 
-        iPhone.update(dt);
+//        iPhone.update(dt);
         for (iPhone iphone : iphones) {
             iphone.update(dt);
 
@@ -116,8 +116,11 @@ public class PlayState extends State {
 
             if (iphone.collides(person.getBounds())) {
                 iphone.noNSA();
-                score += 1;
-                savediPhones= "score: " + (score/3);
+                if (!iphone.getCollided()) {
+                    score += 1;
+                    savediPhones = "score: " + score;
+                    iphone.setCollided(true);
+                }
             }
             iphone.update(dt);
         }
@@ -150,7 +153,7 @@ public class PlayState extends State {
             sb.draw(iphone.getiPhone(), iphone.getPosition().x, iphone.getPosition().y);
         }
 
-        sb.draw(iPhone.getiPhone(), iPhone.getPosition().x, iPhone.getPosition().y);
+//        sb.draw(iPhone.getiPhone(), iPhone.getPosition().x, iPhone.getPosition().y);
         sb.end();
     }
 

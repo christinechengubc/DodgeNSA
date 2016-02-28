@@ -16,14 +16,15 @@ public class iPhone {
     private Vector2 velocity;
     private Texture iPhone;
     private Rectangle bounds;
+    private boolean collided;
 
     public iPhone() {
         iPhone = new Texture("iPhone.png");
         rand = new Random();
         this.position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.HEIGHT));
         velocity = new Vector2(0,0);
-        bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
-
+        bounds = new Rectangle(position.x,position.y,iPhone.getWidth() + 10,iPhone.getHeight() + 10);
+        collided = false;
     }
 
     public void update(float dt) {
@@ -36,14 +37,15 @@ public class iPhone {
 
     public void noNSA() {
         iPhone = new Texture("stop.png");
-;    }
+    }
 
     public void resetObject(){
         this.iPhone = new Texture("iPhone.png");
         rand = new Random();
         this.position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.HEIGHT));
         this.velocity = new Vector2(0,0);
-        this.bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
+        this.bounds = new Rectangle(position.x,position.y,iPhone.getWidth() + 10,iPhone.getHeight() + 10);
+        this.collided = false;
     }
 
     public boolean collides(Rectangle player) {
@@ -56,6 +58,14 @@ public class iPhone {
 
     public Vector2 getPosition() {
         return position;
+    }
+
+    public boolean getCollided() {
+        return collided;
+    }
+
+    public void setCollided(boolean collided) {
+        this.collided = collided;
     }
 
     public static int randInt(int min, int max) {
