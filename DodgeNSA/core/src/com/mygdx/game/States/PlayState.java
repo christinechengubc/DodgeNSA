@@ -16,8 +16,8 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        person = new Person(50, 100);
-        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
+        person = new Person(0, 0);
+//        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
         bg = new Texture("bg.jpg");
     }
 
@@ -35,7 +35,7 @@ public class PlayState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.setProjectionMatrix(cam.combined);
+//        sb.setProjectionMatrix(cam.combined);
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);

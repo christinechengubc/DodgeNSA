@@ -35,8 +35,8 @@ public class Person {
         if(position.x < 0) {
             position.x = 0;
         }
-        if(position.x > 150) {
-            position.x = 150;
+        if(position.x > DodgeNSA.WIDTH - person.getWidth()) {
+            position.x = DodgeNSA.WIDTH - person.getWidth();
         }
     }
 
@@ -50,9 +50,9 @@ public class Person {
 
     public void jump(){
         if(jumpLeft)
-            velocity.x = -100;
+            velocity.x = -300;
         else
-            velocity.x = 100;
+            velocity.x = 300;
         jumpLeft = !jumpLeft;
     }
 }
