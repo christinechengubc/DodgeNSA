@@ -12,6 +12,7 @@ import com.mygdx.game.DodgeNSA;
  */
 public class GameOverState extends State {
     private Texture bg;
+    private Texture gameover;
     private String score;
     private String highScoreString;
     private int highScore;
@@ -19,7 +20,8 @@ public class GameOverState extends State {
 
     public GameOverState(GameStateManager gsm, int score, int highScore) {
         super(gsm);
-        bg = new Texture("bg2.jpg");
+        bg = new Texture("bg.jpg");
+        gameover = new Texture("gameover.png");
         this.score = "Your Score: " + score;
         this.highScoreString = "High Score: " + highScore;
         this.highScore = highScore;
@@ -43,9 +45,10 @@ public class GameOverState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(bg, 0, 0, DodgeNSA.WIDTH, DodgeNSA.HEIGHT);
+        sb.draw(gameover, DodgeNSA.WIDTH / 16, DodgeNSA.HEIGHT / 4);
         bf.setColor(255, 255, 255, 255);
         bf.draw(sb, score, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 4);
-        bf.draw(sb, highScoreString, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 6);
+        bf.draw(sb, highScoreString, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 5);
         sb.end();
 
     }
