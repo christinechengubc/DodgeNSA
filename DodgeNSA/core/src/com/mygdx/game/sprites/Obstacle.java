@@ -15,7 +15,7 @@ public class Obstacle {
 //    private Texture topObstacle, bottomObstacle;
 //    private Vector2 posTopObstacle, posBotObstacle;
     private Random rand;
-    private static final int GRAVITY = -15;
+    private static final int GRAVITY = -1;
     private Vector2 position;
     private Vector2 velocity;
     private Texture obstacle;

@@ -33,7 +33,7 @@ public class Person {
         velocity.scl(1/dt);
 
         if(position.y < DodgeNSA.HEIGHT - person.getHeight()) {
-            velocity.add(0, UPDOWN, 0);
+            //velocity.add(0, UPDOWN, 0);
         }
 
         if(position.x < 0) {

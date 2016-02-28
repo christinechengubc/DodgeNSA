@@ -44,8 +44,8 @@ public class PlayState extends State {
         obstacle4 = new Obstacle();
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
-        obstacles.add(obstacle3);
-        obstacles.add(obstacle4);
+        //obstacles.add(obstacle3);
+        //obstacles.add(obstacle4);
 
         iphones = new LinkedList<iPhone>();
         iphone1 = new iPhone();
@@ -54,8 +54,8 @@ public class PlayState extends State {
         iphone4 = new iPhone();
         iphones.add(iphone1);
         iphones.add(iphone2);
-        iphones.add(iphone3);
-        iphones.add(iphone4);
+       // iphones.add(iphone3);
+        //iphones.add(iphone4);
 
 
 //        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);

@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class iPhone {
     private Random rand;
-    private static final int GRAVITY = -15;
+    private static final int GRAVITY = -1;
     private Vector2 position;
     private Vector2 velocity;
     private Texture iPhone;
@@ -39,11 +39,11 @@ public class iPhone {
 ;    }
 
     public void resetObject(){
-        iPhone = new Texture("iPhone.png");
+        this.iPhone = new Texture("iPhone.png");
         rand = new Random();
-        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.WIDTH));
-        velocity = new Vector2(0,0);
-        bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
+        this.position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.WIDTH));
+        this.velocity = new Vector2(0,0);
+        this.bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
     }
 
     public boolean collides(Rectangle player) {
