@@ -92,6 +92,10 @@ public class PlayState extends State {
             }
             if (obstacle.collides(person.getBounds())) {
                 gsm.set(new GameOverState(gsm));
+                if (score > highScore){
+                    highScore = score;
+                    //highScoreString = "high score: "+highScore;
+                }
             }
             obstacle.update(dt);
         }
@@ -108,7 +112,7 @@ public class PlayState extends State {
             if (iphone.collides(person.getBounds())) {
                 iphone.noNSA();
                 score += 1;
-                savediPhones= "score: " + (score/5);
+                savediPhones= "score: " + (score/3);
             }
             iphone.update(dt);
         }
@@ -123,8 +127,8 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         bf.setColor(255, 255, 255, 255);
-        bf.draw(sb, savediPhones, DodgeNSA.WIDTH - 110, 775);
-        bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 110, 725);
+        bf.draw(sb, savediPhones, 5, 795);
+        //bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 170, 795);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
 
         //draw all the obstacles
