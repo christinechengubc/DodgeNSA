@@ -2,6 +2,7 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.DodgeNSA;
 import com.mygdx.game.sprites.Obstacle;
@@ -19,7 +20,10 @@ public class PlayState extends State {
     private Obstacle obstacle;
     private iPhone iPhone;
     private Texture bg;
-    public int points;
+
+    private int score;
+    private String savediPhones;
+    BitmapFont bf;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -28,7 +32,9 @@ public class PlayState extends State {
 //        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
         iPhone = new iPhone();
         bg = new Texture("bg.jpg");
-        points = 0;
+        score = 0;
+        savediPhones= "score: 0";
+        bf = new BitmapFont();
     }
 
     @Override
@@ -49,7 +55,8 @@ public class PlayState extends State {
 
         if (iPhone.collides(person.getBounds())) {
             iPhone.noNSA();
-            points += 1;
+            score += 1;
+            savediPhones= "score: " + (score/5);
         }
     }
 
@@ -58,6 +65,8 @@ public class PlayState extends State {
 //        sb.setProjectionMatrix(cam.combined);
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
+        bf.setColor(255, 255, 255, 255);
+        bf.draw(sb, savediPhones, DodgeNSA.WIDTH- 75, 100);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
         sb.draw(obstacle.getObstacle(), obstacle.getPosition().x, obstacle.getPosition().y);
         sb.draw(iPhone.getiPhone(), iPhone.getPosition().x, iPhone.getPosition().y);
@@ -67,9 +76,5 @@ public class PlayState extends State {
     @Override
     public void dispose() {
 
-    }
-
-    public int getPoints() {
-        return points;
     }
 }

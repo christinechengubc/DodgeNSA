@@ -14,6 +14,7 @@ public class DodgeNSA extends ApplicationAdapter {
 	public static final String TITLE = "DodgeNSA";
 	private GameStateManager gsm;
 	private SpriteBatch batch;
+
 	
 	@Override
 	public void create () {
