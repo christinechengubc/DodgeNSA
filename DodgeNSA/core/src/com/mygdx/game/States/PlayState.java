@@ -1,6 +1,7 @@
 package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -38,7 +39,14 @@ public class PlayState extends State {
     private int highScore;
     private String highScoreString;
 
+<<<<<<< Updated upstream
     public PlayState(GameStateManager gsm, int highScore) {
+=======
+    private Sound upSFX;
+    private Sound fbi;
+
+    public PlayState(GameStateManager gsm) {
+>>>>>>> Stashed changes
         super(gsm);
         person = new Person(0, 0);
         resetPosition = new Rectangle(250,400,34,24); //CHANGE IF OBSTACLE IMAGE DIMENSION CHANGES
@@ -73,8 +81,15 @@ public class PlayState extends State {
         savediPhones= "Score: 0";
         bf = new BitmapFont();
         bf.getData().setScale(2, 2);
+<<<<<<< Updated upstream
         this.highScore = highScore;
         highScoreString = "High Score: " + highScore;
+=======
+        highScore = 0;
+        highScoreString = "high score: 0";
+        upSFX = Gdx.audio.newSound(Gdx.files.internal("up.wav"));
+        fbi = Gdx.audio.newSound(Gdx.files.internal("police.wav"));
+>>>>>>> Stashed changes
     }
 
     @Override
@@ -96,6 +111,11 @@ public class PlayState extends State {
                 obstacle.resetObject();
             }
             if (obstacle.collides(person.getBounds())) {
+<<<<<<< Updated upstream
+=======
+                gsm.set(new GameOverState(gsm));
+                fbi.play();
+>>>>>>> Stashed changes
                 if (score > highScore){
                     highScore = score;
                     highScoreString = "High Score: "+highScore;
@@ -116,6 +136,7 @@ public class PlayState extends State {
 
             if (iphone.collides(person.getBounds())) {
                 iphone.noNSA();
+                upSFX.play();
                 if (!iphone.getCollided()) {
                     score += 1;
                     savediPhones = "Score: " + score;

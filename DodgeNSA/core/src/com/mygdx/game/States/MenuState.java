@@ -19,16 +19,21 @@ public class MenuState extends State {
     public MenuState(GameStateManager gsm, int highScore) {
         super(gsm);
         background = new Texture("bg.jpg");
+<<<<<<< Updated upstream
         playBtn = new Texture("playBtn.png");
         this.highScore = highScore;
+=======
+        playBtn = new Texture("playbtn.png");
+>>>>>>> Stashed changes
         bf = new BitmapFont();
-        story = "                     In 2016, the NSA has bugged all iPhones \n" +
+        story = "                     In 2016, the NSA has bugged all iPhones. \n" +
                 "\n" +
                 "\n" +
-                "    Tim Cook has to use Private Internet Access to save iPhones \n" +
+                "    Tim Cook has to use Private Internet Access to save iPhones. \n" +
                 "\n" +
                 "\n" +
                 "                           Avoid bugs and collect iPhones.";
+
     }
 
     @Override

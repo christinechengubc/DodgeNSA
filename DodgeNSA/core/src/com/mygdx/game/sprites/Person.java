@@ -1,5 +1,7 @@
 package com.mygdx.game.sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -15,12 +17,15 @@ public class Person {
     private Texture person;
     private Rectangle bounds;
 
+    private Sound jumpSFX;
+
     public Person(int x, int y){
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0,0,0);
         person = new Texture("person.png");
         jumpLeft = false;
         bounds = new Rectangle(x,y,person.getWidth(),person.getHeight());
+        jumpSFX = Gdx.audio.newSound(Gdx.files.internal("hru.wav"));
     }
 
     public void update(float dt){
@@ -65,7 +70,9 @@ public class Person {
         else {
             velocity.x = 1500;
         }
+        jumpSFX.play();
         jumpLeft = !jumpLeft;
+
     }
 
     public void dispose() {
