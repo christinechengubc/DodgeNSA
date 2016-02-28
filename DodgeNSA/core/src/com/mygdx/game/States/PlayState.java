@@ -91,8 +91,6 @@ public class PlayState extends State {
                 obstacle.resetObject();
             }
             if (obstacle.collides(person.getBounds())) {
-                if(score > highScore)
-                    highScore = score;
                 gsm.set(new GameOverState(gsm));
             }
             obstacle.update(dt);
