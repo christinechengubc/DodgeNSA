@@ -35,6 +35,7 @@ public class PlayState extends State {
         score = 0;
         savediPhones= "score: 0";
         bf = new BitmapFont();
+        bf.getData().setScale(2, 2);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class PlayState extends State {
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         bf.setColor(255, 255, 255, 255);
-        bf.draw(sb, savediPhones, DodgeNSA.WIDTH- 75, 100);
+        bf.draw(sb, savediPhones, DodgeNSA.WIDTH- 110, 775);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
         sb.draw(obstacle.getObstacle(), obstacle.getPosition().x, obstacle.getPosition().y);
         sb.draw(iPhone.getiPhone(), iPhone.getPosition().x, iPhone.getPosition().y);
