@@ -11,6 +11,8 @@ import com.mygdx.game.sprites.Obstacle;
 import com.mygdx.game.sprites.Person;
 import com.mygdx.game.sprites.iPhone;
 
+import org.w3c.dom.css.Rect;
+
 import java.util.LinkedList;
 
 /**
@@ -24,10 +26,9 @@ public class PlayState extends State {
     private iPhone iphone1, iphone2, iphone3, iphone4;
     private LinkedList<Obstacle> obstacles;
     private LinkedList<iPhone> iphones;
+    private Rectangle resetPosition;
     //private LinkedList<Obstacle> toRemove;
     //private LinkedList<Obstacle> toAdd;
-    private Rectangle resetPosition;
-    private iPhone iPhone;
     private Texture bg;
 
     private int score;
@@ -159,6 +160,15 @@ public class PlayState extends State {
 
     @Override
     public void dispose() {
-
+        bg.dispose();
+        person.dispose();
+        LadderLeft.dispose();
+        LadderRight.dispose();
+        for (iPhone iphone: iphones) {
+            iphone.dispose();
+        }
+        for (Obstacle obstacle: obstacles) {
+            obstacle.dispose();
+        }
     }
 }

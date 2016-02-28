@@ -80,4 +80,8 @@ public class iPhone {
         return randomNum;
     }
 
+    public void dispose() {
+        iPhone.dispose();
+    }
+
 }

@@ -80,6 +80,10 @@ public class Obstacle {
         return randomNum;
     }
 
+    public void dispose() {
+        obstacle.dispose();
+    }
+
 //    public Texture getTopObstacle() {
 //        return topObstacle;
 //    }

@@ -22,7 +22,6 @@ public class GameOverState extends State {
     protected void handleInput() {
         if (Gdx.input.justTouched()) {
             gsm.set(new MenuState(gsm));
-            dispose();
         }
     }
 

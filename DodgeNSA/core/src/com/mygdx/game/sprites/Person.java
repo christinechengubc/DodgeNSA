@@ -67,4 +67,8 @@ public class Person {
         }
         jumpLeft = !jumpLeft;
     }
+
+    public void dispose() {
+        person.dispose();
+    }
 }
