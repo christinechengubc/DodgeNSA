@@ -18,7 +18,7 @@ public class Ladder{
     private Texture ladder;
 
     public Ladder(int x, int y) {
-        ladder = new Texture("ladder.gif");
+        ladder = new Texture("ladder.png");
         position = new Vector2(x, y);
 
 //        topObstacle = new Texture("topObstacle.png");
