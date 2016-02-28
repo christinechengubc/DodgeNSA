@@ -10,7 +10,7 @@ public class DodgeNSA extends ApplicationAdapter {
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
 	public static final String TITLE = "DodgeNSA";
-
+	
 	SpriteBatch batch;
 	Texture img;
 	
