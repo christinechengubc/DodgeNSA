@@ -38,7 +38,7 @@ public class PlayState extends State {
     private int highScore;
     private String highScoreString;
 
-    public PlayState(GameStateManager gsm) {
+    public PlayState(GameStateManager gsm, int highScore) {
         super(gsm);
         person = new Person(0, 0);
         resetPosition = new Rectangle(250,400,34,24); //CHANGE IF OBSTACLE IMAGE DIMENSION CHANGES
@@ -68,14 +68,13 @@ public class PlayState extends State {
 
 
 //        cam.setToOrtho(false, DodgeNSA.WIDTH / 2, DodgeNSA.HEIGHT / 2);
-//        iPhone = new iPhone();
         bg = new Texture("bg.jpg");
         score = 0;
-        savediPhones= "score: 0";
+        savediPhones= "Score: 0";
         bf = new BitmapFont();
         bf.getData().setScale(2, 2);
-        highScore = 0;
-        highScoreString = "high score: 0";
+        this.highScore = highScore;
+        highScoreString = "High Score: " + highScore;
     }
 
     @Override
@@ -97,11 +96,11 @@ public class PlayState extends State {
                 obstacle.resetObject();
             }
             if (obstacle.collides(person.getBounds())) {
-                gsm.set(new GameOverState(gsm));
                 if (score > highScore){
                     highScore = score;
-                    //highScoreString = "high score: "+highScore;
+                    highScoreString = "High Score: "+highScore;
                 }
+                gsm.set(new GameOverState(gsm, score, highScore));
             }
             obstacle.update(dt);
         }
@@ -119,7 +118,7 @@ public class PlayState extends State {
                 iphone.noNSA();
                 if (!iphone.getCollided()) {
                     score += 1;
-                    savediPhones = "score: " + score;
+                    savediPhones = "Score: " + score;
                     iphone.setCollided(true);
                 }
             }
@@ -141,7 +140,7 @@ public class PlayState extends State {
         sb.draw(LadderRight.getLadder(), LadderRight.getPosition().x, LadderRight.getPosition().y);
 
         bf.draw(sb, savediPhones, 5, 795);
-        //bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 170, 795);
+        bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 200, 795);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
 
         //draw all the obstacles

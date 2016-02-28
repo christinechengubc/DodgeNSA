@@ -14,11 +14,13 @@ public class MenuState extends State {
     private Texture playBtn;
     private String story;
     BitmapFont bf;
+    private int highScore;
 
-    public MenuState(GameStateManager gsm) {
+    public MenuState(GameStateManager gsm, int highScore) {
         super(gsm);
         background = new Texture("bg.jpg");
         playBtn = new Texture("playBtn.png");
+        this.highScore = highScore;
         bf = new BitmapFont();
         story = "                     In 2016, the NSA has bugged all iPhones \n" +
                 "\n" +
@@ -32,7 +34,7 @@ public class MenuState extends State {
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()) {
-            gsm.set(new PlayState(gsm));
+            gsm.set(new PlayState(gsm, highScore));
         }
     }
 
