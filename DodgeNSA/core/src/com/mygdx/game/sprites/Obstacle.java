@@ -1,6 +1,7 @@
 package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.DodgeNSA;
@@ -18,12 +19,14 @@ public class Obstacle {
     private Vector2 position;
     private Vector2 velocity;
     private Texture obstacle;
+    private Rectangle bounds;
 
     public Obstacle(){
         obstacle = new Texture("obstacle.png");
         rand = new Random();
         position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), DodgeNSA.HEIGHT);
         velocity = new Vector2(0,0);
+        bounds = new Rectangle(position.x,position.y,obstacle.getWidth(),obstacle.getHeight());
 
 //        topObstacle = new Texture("topObstacle.png");
 //        bottomObstacle = new Texture("bottomObstacle.png");
@@ -38,6 +41,11 @@ public class Obstacle {
         velocity.scl(dt);
         position.add(0,velocity.y);
         velocity.scl(1/dt);
+        bounds.setPosition(position.x,position.y);
+    }
+
+    public boolean collides(Rectangle player) {
+        return player.overlaps(bounds);
     }
 
     public Texture getObstacle() {

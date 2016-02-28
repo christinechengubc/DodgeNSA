@@ -37,6 +37,9 @@ public class PlayState extends State {
         handleInput();
         person.update(dt);
         obstacle.update(dt);
+        if (obstacle.collides(person.getBounds())) {
+            gsm.set(new PlayState(gsm));
+        }
     }
 
     @Override
