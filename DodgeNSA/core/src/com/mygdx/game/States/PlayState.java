@@ -31,6 +31,9 @@ public class PlayState extends State {
     private String savediPhones;
     BitmapFont bf;
 
+    private int highScore;
+    private String highScoreString;
+
     public PlayState(GameStateManager gsm) {
         super(gsm);
         person = new Person(0, 0);
@@ -65,6 +68,8 @@ public class PlayState extends State {
         savediPhones= "score: 0";
         bf = new BitmapFont();
         bf.getData().setScale(2, 2);
+        highScore = 0;
+        highScoreString = "highscore: 0";
     }
 
     @Override
@@ -86,6 +91,8 @@ public class PlayState extends State {
                 obstacle.resetObject();
             }
             if (obstacle.collides(person.getBounds())) {
+                if(score > highScore)
+                    highScore = score;
                 gsm.set(new GameOverState(gsm));
             }
             obstacle.update(dt);
@@ -119,6 +126,7 @@ public class PlayState extends State {
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         bf.setColor(255, 255, 255, 255);
         bf.draw(sb, savediPhones, DodgeNSA.WIDTH - 110, 775);
+        bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 110, 750);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
 
         //draw all the obstacles
