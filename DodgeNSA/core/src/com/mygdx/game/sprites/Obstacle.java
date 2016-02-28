@@ -24,7 +24,7 @@ public class Obstacle {
     public Obstacle(){
         obstacle = new Texture("obstacle.png");
         rand = new Random();
-        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), DodgeNSA.HEIGHT);
+        position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT+200)+DodgeNSA.HEIGHT);
         velocity = new Vector2(0,0);
         bounds = new Rectangle(position.x,position.y,obstacle.getWidth(),obstacle.getHeight());
 
@@ -63,9 +63,21 @@ public class Obstacle {
     public void resetObject(){
         obstacle = new Texture("obstacle.png");
         rand = new Random();
-        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT+200)+DodgeNSA.HEIGHT);
+        position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT+200)+DodgeNSA.HEIGHT);
         velocity = new Vector2(0,0);
         bounds = new Rectangle(position.x,position.y,obstacle.getWidth(),obstacle.getHeight());
+    }
+
+    public static int randInt(int min, int max) {
+
+        // Usually this can be a field rather than a method variable
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 
 //    public Texture getTopObstacle() {

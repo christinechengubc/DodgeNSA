@@ -20,7 +20,7 @@ public class iPhone {
     public iPhone() {
         iPhone = new Texture("iPhone.png");
         rand = new Random();
-        position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), DodgeNSA.HEIGHT);
+        this.position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.HEIGHT));
         velocity = new Vector2(0,0);
         bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
 
@@ -41,7 +41,7 @@ public class iPhone {
     public void resetObject(){
         this.iPhone = new Texture("iPhone.png");
         rand = new Random();
-        this.position = new Vector2(rand.nextInt(DodgeNSA.WIDTH), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.WIDTH));
+        this.position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT + 200) + (DodgeNSA.HEIGHT));
         this.velocity = new Vector2(0,0);
         this.bounds = new Rectangle(position.x,position.y,iPhone.getWidth(),iPhone.getHeight());
     }
@@ -56,6 +56,18 @@ public class iPhone {
 
     public Vector2 getPosition() {
         return position;
+    }
+
+    public static int randInt(int min, int max) {
+
+        // Usually this can be a field rather than a method variable
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 
 }
