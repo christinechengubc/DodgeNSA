@@ -69,7 +69,7 @@ public class PlayState extends State {
         bf = new BitmapFont();
         bf.getData().setScale(2, 2);
         highScore = 0;
-        highScoreString = "highscore: 0";
+        highScoreString = "high score: 0";
     }
 
     @Override
@@ -126,7 +126,7 @@ public class PlayState extends State {
         sb.draw(bg, cam.position.x - (cam.viewportWidth) / 2, 0);
         bf.setColor(255, 255, 255, 255);
         bf.draw(sb, savediPhones, DodgeNSA.WIDTH - 110, 775);
-        bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 110, 750);
+        bf.draw(sb, highScoreString, DodgeNSA.WIDTH - 110, 725);
         sb.draw(person.getPerson(), person.getPosition().x, person.getPosition().y);
 
         //draw all the obstacles
