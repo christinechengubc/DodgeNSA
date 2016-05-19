@@ -10,6 +10,6 @@ Created at nWHacks 2016.
 6. Click apply
 7. Play the game now!
 
-For more information on how to setup the game watch this video:
+For more information on how to setup the game, watch this video:
 https://youtu.be/rzBVTPaUUDg?t=275
 
