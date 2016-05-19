@@ -2,8 +2,8 @@ Android game created on top of libgdx using Android Studio.
 Created at nWHacks 2016.
 
 ##Set Up
-1. Go to Run/Debug configurations</br>
-2. Name the configuration "desktop"<
+1. Go to Run/Debug configurations
+2. Name the configuration "desktop"
 3. Select classpath module "desktop"
 4. Select "Desktop Launcher" as the main class
 5. Select the android assets folder as the working directory
