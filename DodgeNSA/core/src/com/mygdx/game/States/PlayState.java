@@ -28,8 +28,6 @@ public class PlayState extends State {
     private LinkedList<Obstacle> obstacles;
     private LinkedList<iPhone> iphones;
     private Rectangle resetPosition;
-    //private LinkedList<Obstacle> toRemove;
-    //private LinkedList<Obstacle> toAdd;
     private Texture bg;
 
     private int score;
@@ -46,8 +44,6 @@ public class PlayState extends State {
         person = new Person(0, 0);
         resetPosition = new Rectangle(250,400,34,24); //CHANGE IF OBSTACLE IMAGE DIMENSION CHANGES
         obstacles = new LinkedList<Obstacle>();
-        //toRemove = new LinkedList<Obstacle>();
-        //toAdd = new LinkedList<Obstacle>();
         LadderLeft = new Ladder(0,0);
         LadderRight = new Ladder(380,0);
         obstacle1 = new Obstacle();
@@ -56,8 +52,6 @@ public class PlayState extends State {
         obstacle4 = new Obstacle();
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
-        //obstacles.add(obstacle3);
-        //obstacles.add(obstacle4);
 
         iphones = new LinkedList<iPhone>();
         iphone1 = new iPhone();
@@ -91,7 +85,6 @@ public class PlayState extends State {
 
     @Override
     public void update(float dt) {
-        //toAdd.clear();
         handleInput();
         person.update(dt);
 
@@ -112,7 +105,6 @@ public class PlayState extends State {
             obstacle.update(dt);
         }
 
-//        iPhone.update(dt);
         for (iPhone iphone : iphones) {
             iphone.update(dt);
 
@@ -161,7 +153,6 @@ public class PlayState extends State {
             sb.draw(iphone.getiPhone(), iphone.getPosition().x, iphone.getPosition().y);
         }
 
-//        sb.draw(iPhone.getiPhone(), iPhone.getPosition().x, iPhone.getPosition().y);
         sb.end();
     }
 

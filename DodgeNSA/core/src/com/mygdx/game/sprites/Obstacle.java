@@ -9,11 +9,6 @@ import com.mygdx.game.DodgeNSA;
 import java.util.Random;
 
 public class Obstacle {
-//    public static final int FLUCTUATION = 130;
-//    public static final int OBSTACLE_GAP = 100;
-//    public static final int LOWEST_OPENING = 120;
-//    private Texture topObstacle, bottomObstacle;
-//    private Vector2 posTopObstacle, posBotObstacle;
     private Random rand;
     private static final int GRAVITY = -1;
     private Vector2 position;
@@ -27,13 +22,6 @@ public class Obstacle {
         position = new Vector2(randInt(150, 330), rand.nextInt(DodgeNSA.HEIGHT+200)+DodgeNSA.HEIGHT);
         velocity = new Vector2(0,0);
         bounds = new Rectangle(position.x,position.y,obstacle.getWidth(),obstacle.getHeight());
-
-//        topObstacle = new Texture("topObstacle.png");
-//        bottomObstacle = new Texture("bottomObstacle.png");
-//        rand = new Random();
-//
-//        posTopObstacle = new Vector2(x, rand.nextInt(FLUCTUATION) + OBSTACLE_GAP + LOWEST_OPENING);
-//        posBotObstacle = new Vector2(x, posBotObstacle.y - OBSTACLE_GAP - bottomObstacle.getHeight());
     }
 
     public void update(float dt) {
@@ -84,19 +72,4 @@ public class Obstacle {
         obstacle.dispose();
     }
 
-//    public Texture getTopObstacle() {
-//        return topObstacle;
-//    }
-//
-//    public Texture getBottomObstacle() {
-//        return bottomObstacle;
-//    }
-//
-//    public Vector2 getPosTopObstacle() {
-//        return posTopObstacle;
-//    }
-//
-//    public Vector2 getPosBotObstacle() {
-//        return posBotObstacle;
-//    }
 }
