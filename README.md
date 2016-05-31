@@ -1,6 +1,8 @@
 Android game created on top of libgdx using Android Studio.
 Created at nWHacks 2016.
 
+Video of the game: https://www.youtube.com/watch?v=a2_67FWe3ow&feature=youtu.be
+
 ##Set Up
 1. Go to Run/Debug configurations
 2. Add new configuration of type application
